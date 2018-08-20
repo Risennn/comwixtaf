@@ -19,6 +19,7 @@ public class CartPage extends PageObject {
     private static final String DATA_HOOK_PRODUCT_NAME = "[data-hook=product-name]";
     private static final String DATA_HOOK_PRODUCT_QUANTITY_INPUT = "[data-hook=product-quantity] input";
     private static final String DATA_HOOK_PRODUCT_TOTAL_PRICE = "[data-hook=product-total-price]";
+    private static final String ANCESTOR_SECTION_DATA_HOOK_PRODUCT_QUANTITY_INPUT = "//ancestor::section//*[@data-hook='product-quantity']//input";
 
     @FindBy(xpath = "//div[@class='p1inlineContent']//iframe[contains(@src, 'cart?')]")
     private WebElementFacade iframeContainer;
@@ -63,7 +64,7 @@ public class CartPage extends PageObject {
     }
 
     public void changeItemQuantity(String productName, int qty) {
-        WebElementFacade qtyInput = getProductInTheCart(productName).findBy(By.xpath("//ancestor::section//*[@data-hook='product-quantity']//input"));
+        WebElementFacade qtyInput = getProductInTheCart(productName).findBy(By.xpath(ANCESTOR_SECTION_DATA_HOOK_PRODUCT_QUANTITY_INPUT));
         qtyInput.typeAndTab(String.valueOf(qty));
     }
 }

@@ -6,6 +6,8 @@ import net.thucydides.core.pages.PageObject;
 
 public class ProductPage extends PageObject {
 
+    private static final String IFRAME_NAME = "TPAMultiSection_jh9acbtn";
+
     @FindBy(xpath = "//*[@data-hook='product-title']")
     private WebElementFacade productName;
 
@@ -20,7 +22,7 @@ public class ProductPage extends PageObject {
 
     public String getProductName() {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame("TPAMultiSection_jh9acbtn");
+        getDriver().switchTo().frame(IFRAME_NAME);
         String name = productName.getText();
         getDriver().switchTo().defaultContent();
         return name;
@@ -28,7 +30,7 @@ public class ProductPage extends PageObject {
 
     public String getProductSku() {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame("TPAMultiSection_jh9acbtn");
+        getDriver().switchTo().frame(IFRAME_NAME);
         String sku = productSku.getText().replace("SKU: ", "");
         getDriver().switchTo().defaultContent();
         return sku;
@@ -36,7 +38,7 @@ public class ProductPage extends PageObject {
 
     public String getProductPrice() {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame("TPAMultiSection_jh9acbtn");
+        getDriver().switchTo().frame(IFRAME_NAME);
         String price = productPrice.getText();
         getDriver().switchTo().defaultContent();
         return price;
@@ -44,7 +46,7 @@ public class ProductPage extends PageObject {
 
     public void addToCart() {
         getDriver().switchTo().defaultContent();
-        getDriver().switchTo().frame("TPAMultiSection_jh9acbtn");
+        getDriver().switchTo().frame(IFRAME_NAME);
         addToCartButton.click();
         getDriver().switchTo().defaultContent();
     }
